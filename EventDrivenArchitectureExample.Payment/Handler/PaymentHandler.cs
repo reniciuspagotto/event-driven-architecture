@@ -23,6 +23,7 @@ namespace EventDrivenArchitectureExample.Payment.Handler
             if (order.TotalPurchase > 3000)
             {
                 var paymentNotAllowed = new PaymentNotAllowedMessage();
+                paymentNotAllowed.ProductId = order.ProductId;
                 paymentNotAllowed.OrderId = stockCheckedMessage.OrderId;
                 paymentNotAllowed.Reason = "Operação negada pela operadora do cartão";
 

@@ -3,6 +3,7 @@ using Azure.Messaging.EventHubs.Consumer;
 using Azure.Messaging.EventHubs.Processor;
 using Azure.Storage.Blobs;
 using EventDrivenArchitectureExample.Data.Messages;
+using EventDrivenArchitectureExample.Data.Settings;
 using EventDrivenArchitectureExample.Order.Handlers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,11 +25,11 @@ namespace EventDrivenArchitectureExample.Stock.HostedService
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            var eventHubConnectionString = "<your eventhub connection>";
+            var eventHubConnectionString = ApplicationSettings.EventHubConnection;
             var eventHubName = "order-created-compensation";
 
-            var blobStorageConnectionString = "<your blob storage connection>";
-            var productContainer = "<container name>";
+            var blobStorageConnectionString = ApplicationSettings.BlobConnection;
+            var productContainer = "order-created-compensation-manager";
 
             string consumerGroup = EventHubConsumerClient.DefaultConsumerGroupName;
 

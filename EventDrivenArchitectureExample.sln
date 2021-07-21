@@ -9,9 +9,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventDrivenArchitectureExam
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventDrivenArchitectureExample.Data", "EventDrivenArchitectureExample.Data\EventDrivenArchitectureExample.Data.csproj", "{88D0D877-1335-4671-95DB-0DE6DCBEAA12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventDrivenArchitectureExample.Product", "EventDrivenArchitectureExample.Product\EventDrivenArchitectureExample.Product.csproj", "{9BD15B3B-8235-473C-93ED-C7B5894E34C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventDrivenArchitectureExample.Product", "EventDrivenArchitectureExample.Product\EventDrivenArchitectureExample.Product.csproj", "{9BD15B3B-8235-473C-93ED-C7B5894E34C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventDrivenArchitectureExample.Payment", "EventDrivenArchitectureExample.Payment\EventDrivenArchitectureExample.Payment.csproj", "{6892A86B-517A-443A-B840-6518A5D903C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventDrivenArchitectureExample.Payment", "EventDrivenArchitectureExample.Payment\EventDrivenArchitectureExample.Payment.csproj", "{6892A86B-517A-443A-B840-6518A5D903C0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1- Product", "1- Product", "{350B99D2-0B56-4722-ACFD-9D8FD43AB251}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Order", "2 - Order", "{F20270EE-FBDC-4BF0-B145-7BFDC08A977C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Stock", "3 - Stock", "{5BC0790D-464E-440E-96B9-390493F03DB2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Payment", "4 - Payment", "{A30795BB-2AF0-4566-9F01-988CD4DD07F2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - CrossCutting", "5 - CrossCutting", "{2C50C2CE-108B-4B96-9149-3FA89EE849A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +52,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CE5EA4BE-42F1-481C-8C9F-5EFF03BF4DF5} = {F20270EE-FBDC-4BF0-B145-7BFDC08A977C}
+		{5DA4FE0D-02A3-4BF3-862D-E4D7642A0AFC} = {5BC0790D-464E-440E-96B9-390493F03DB2}
+		{88D0D877-1335-4671-95DB-0DE6DCBEAA12} = {2C50C2CE-108B-4B96-9149-3FA89EE849A2}
+		{9BD15B3B-8235-473C-93ED-C7B5894E34C9} = {350B99D2-0B56-4722-ACFD-9D8FD43AB251}
+		{6892A86B-517A-443A-B840-6518A5D903C0} = {A30795BB-2AF0-4566-9F01-988CD4DD07F2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A66F05D4-0D44-4C85-A9EE-259CDEF65E4F}

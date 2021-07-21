@@ -3,6 +3,7 @@ using Azure.Messaging.EventHubs.Consumer;
 using Azure.Messaging.EventHubs.Processor;
 using Azure.Storage.Blobs;
 using EventDrivenArchitectureExample.Data.Messages;
+using EventDrivenArchitectureExample.Data.Settings;
 using EventDrivenArchitectureExample.Stock.Handler;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,11 +25,11 @@ namespace EventDrivenArchitectureExample.Stock.HostedService
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            var eventHubConnectionString = "<your eventhub connection>";
+            var eventHubConnectionString = ApplicationSettings.EventHubConnection;
             var eventHubName = "stock-compensation";
 
-            var blobStorageConnectionString = "<your blob storage connection>";
-            var stockContainer = "<container name>";
+            var blobStorageConnectionString = ApplicationSettings.BlobConnection;
+            var stockContainer = "stock-compensation-manager";
 
             string consumerGroup = EventHubConsumerClient.DefaultConsumerGroupName;
 
@@ -43,7 +44,7 @@ namespace EventDrivenArchitectureExample.Stock.HostedService
 
         public async Task ProcessEventHandler(ProcessEventArgs eventArgs)
         {
-            var orderMessage = JsonSerializer.Deserialize<OrderCreatedMessage>(eventArgs.Data.Body.ToArray());
+            var orderMessage = JsonSerializer.Deserialize<PaymentNotAllowedMessage>(eventArgs.Data.Body.ToArray());
 
             Console.WriteLine("\tReceived event: {0}", orderMessage);
 

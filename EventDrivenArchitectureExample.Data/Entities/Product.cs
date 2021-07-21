@@ -2,11 +2,11 @@
 {
     public class Product
     {
-        public Product(int id, string name, int stock)
+        public Product(int id, string name, int stockQuantity)
         {
             Id = id;
             Name = name;
-            StockQuantity = stock;
+            StockQuantity = stockQuantity;
         }
 
         public int Id { get; set; }

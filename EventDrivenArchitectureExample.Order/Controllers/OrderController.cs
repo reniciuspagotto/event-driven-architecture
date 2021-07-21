@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace EventDrivenArchitectureExample.Order.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/order")]
     public class OrderController : ControllerBase
     {
         protected readonly IOrderHandler _orderHandler;

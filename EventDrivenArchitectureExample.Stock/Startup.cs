@@ -21,13 +21,13 @@ namespace EventDrivenArchitectureExample.Stock
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
             services.ConfigureDataLayer(Configuration);
 
             services.AddScoped<IStockHandler, StockHandler>();
 
             services.AddHostedService<ProcessStockConsumer>();
+            services.AddHostedService<ProcessStockCompensationConsumer>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

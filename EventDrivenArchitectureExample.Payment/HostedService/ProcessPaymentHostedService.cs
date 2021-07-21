@@ -3,6 +3,7 @@ using Azure.Messaging.EventHubs.Consumer;
 using Azure.Messaging.EventHubs.Processor;
 using Azure.Storage.Blobs;
 using EventDrivenArchitectureExample.Data.Messages;
+using EventDrivenArchitectureExample.Data.Settings;
 using EventDrivenArchitectureExample.Payment.Handler;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,11 +25,11 @@ namespace EventDrivenArchitectureExample.Payment.HostedService
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            var eventHubConnectionString = "<your eventhub connection>";
+            var eventHubConnectionString = ApplicationSettings.EventHubConnection;
             var eventHubName = "stock-checked";
 
-            var blobStorageConnectionString = "<your blob storage connection>";
-            var paymentContainer = "<container name>";
+            var blobStorageConnectionString = ApplicationSettings.BlobConnection;
+            var paymentContainer = "stock-checked-manager";
 
             string consumerGroup = EventHubConsumerClient.DefaultConsumerGroupName;
 

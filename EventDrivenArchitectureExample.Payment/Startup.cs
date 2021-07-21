@@ -1,3 +1,6 @@
+using EventDrivenArchitectureExample.Data;
+using EventDrivenArchitectureExample.Payment.Handler;
+using EventDrivenArchitectureExample.Payment.HostedService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -21,10 +24,15 @@ namespace EventDrivenArchitectureExample.Payment
         {
 
             services.AddControllers();
+            services.ConfigureDataLayer(Configuration);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "EventDrivenArchitectureExample.Payment", Version = "v1" });
             });
+
+            services.AddScoped<IPaymentHandler, PaymentHandler>();
+
+            services.AddHostedService<ProcessPaymentHostedService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

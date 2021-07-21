@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace EventDrivenArchitectureExample.Product.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/product")]
     public class ProductController : ControllerBase
     {
         private readonly IProductHandler _productHandler;
@@ -15,7 +15,7 @@ namespace EventDrivenArchitectureExample.Product.Controllers
             _productHandler = productHandler;
         }
 
-        [HttpPost("product")]
+        [HttpPost]
         public async Task<IActionResult> CreateProduct(Data.Entities.Product product)
         {
             var response = await _productHandler.Create(product);

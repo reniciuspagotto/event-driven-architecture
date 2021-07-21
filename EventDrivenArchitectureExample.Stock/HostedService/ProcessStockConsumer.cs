@@ -3,8 +3,8 @@ using Azure.Messaging.EventHubs.Consumer;
 using Azure.Messaging.EventHubs.Processor;
 using Azure.Storage.Blobs;
 using EventDrivenArchitectureExample.Data.Messages;
+using EventDrivenArchitectureExample.Data.Settings;
 using EventDrivenArchitectureExample.Stock.Handler;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -16,7 +16,6 @@ namespace EventDrivenArchitectureExample.Stock.HostedService
 {
     public class ProcessStockConsumer : BackgroundService
     {
-        private readonly IConfiguration _configuration;
         private readonly IStockHandler _stockHandler;
 
         public ProcessStockConsumer(IServiceProvider serviceProvider)
@@ -26,11 +25,11 @@ namespace EventDrivenArchitectureExample.Stock.HostedService
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            var eventHubConnectionString = "<your eventhub connection>";
+            var eventHubConnectionString = ApplicationSettings.EventHubConnection;
             var eventHubName = "order-created";
 
-            var blobStorageConnectionString = "<your blob storage connection>";
-            var stockContainer = "<container name>";
+            var blobStorageConnectionString = ApplicationSettings.BlobConnection;
+            var stockContainer = "order-created-manager";
 
             string consumerGroup = EventHubConsumerClient.DefaultConsumerGroupName;
 

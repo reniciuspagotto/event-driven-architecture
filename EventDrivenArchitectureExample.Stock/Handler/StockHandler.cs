@@ -27,12 +27,12 @@ namespace EventDrivenArchitectureExample.Stock.Handler
                 _dataContext.Products.Update(product);
                 await _dataContext.SaveChangesAsync();
 
-                var outOfStock = new StockCheckedMessage
+                var stockChecked = new StockCheckedMessage
                 {
                     OrderId = orderCreatedMessage.Id
                 };
 
-                await eventService.SendEvent(outOfStock, "stock-checked");
+                await eventService.SendEvent(stockChecked, "stock-checked");
             }
             else
             {
@@ -50,8 +50,9 @@ namespace EventDrivenArchitectureExample.Stock.Handler
         {
             var eventService = new EventMessageService();
             var product = await _dataContext.Products.FirstOrDefaultAsync(p => p.Id == paymentNotAllowedMessage.ProductId);
+            var order = await _dataContext.Orders.FirstOrDefaultAsync(p => p.Id == paymentNotAllowedMessage.OrderId);
 
-            product.StockQuantity += paymentNotAllowedMessage.Quantity;
+            product.StockQuantity += order.Quantity;
 
             _dataContext.Products.Update(product);
             await _dataContext.SaveChangesAsync();

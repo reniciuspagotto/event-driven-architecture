@@ -1,5 +1,6 @@
 ﻿using Azure.Messaging.EventHubs;
 using Azure.Messaging.EventHubs.Producer;
+using EventDrivenArchitectureExample.Data.Settings;
 using System;
 using System.Text;
 using System.Text.Json;
@@ -11,7 +12,7 @@ namespace EventDrivenArchitectureExample.Data.Services
     {
         public async Task SendEvent<T>(T message, string hubname)
         {
-            var eventHubConnectionString = "<your eventhub connection>";
+            var eventHubConnectionString = ApplicationSettings.EventHubConnection;
             var eventHubName = hubname;
 
             var producerClient = new EventHubProducerClient(eventHubConnectionString, eventHubName, new EventHubProducerClientOptions
